@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import logo from './tu-logo.png';
-import './App.css';
+import * as React from 'react';
+import * as logo from '../Assets/tu-logo.png';
+import Input from './Input';
 
 /**
  * Retrieves input data from a form and returns it as a JSON object.
@@ -15,10 +15,18 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
 }, {});
 const SignupRoute = 'https://6bh6fxtt1b.execute-api.us-west-2.amazonaws.com/dev/signup';
 
-class App extends Component {
-  state = {
-    submitting: false,
-    completed: false
+export interface IFormSignUpState {
+  submitting: boolean;
+  completed: boolean;
+}
+
+class FormSignUp extends React.Component<{}, IFormSignUpState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      submitting: false,
+      completed: false
+    };
   }
 
   handleSubmit = (e) => {
@@ -64,23 +72,11 @@ class App extends Component {
         ) : (
         <form className='signup-form form-animate' onSubmit={this.handleSubmit}>
           <div className='signup-form__row'>
-            <div className='signup-form__group'>
-              <label htmlFor='firstName'>First Name</label>
-              <input className='signup-form__input' type='text' name='firstName' />
-            </div>
-            <div className='signup-form__group'>
-              <label htmlFor='firstName'>Last Name</label>
-              <input className='signup-form__input signup-form__input-right' type='text' name='lastName' />
-            </div>
+            <Input label="First Name" name="firstName" />
+            <Input label="Last Name" name="lastName" />
           </div>
-          <div className='signup-form__group'>
-            <label htmlFor='firstName'>Email</label>
-            <input className='signup-form__input' type='text' name='email' />
-          </div>
-          <div className='signup-form__group'>
-            <label htmlFor='firstName'>Certifications</label>
-            <textarea className='signup-form__input' name='credentials' />
-          </div>
+          <Input label="Email" name="email" />
+          <Input label="Certifications" name="credentials" multiLine />
           <button className='signup-form__button' type='submit' disabled={this.state.submitting}>SUBMIT</button>
         </form>
         )}
@@ -90,4 +86,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default FormSignUp;
