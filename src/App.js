@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './tu-logo.png';
+// import logo from './tu-logo.png';
 import './App.css';
 
 /**
@@ -42,6 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <iframe className="embedded-form"
+                title="embedded-form"
                 frameborder="0" src="https://app.smartsheet.com/b/form/de2b110ff77146cc93e866aa912f53d5"></iframe>
         {/* <div className='welcome__container'>
           <div className='welcome__title-container'>
