@@ -171,3 +171,8 @@ h1 {
     top: 0;
   }
 }
+
+.embedded-form {
+  width: 100%;
+  height: 100vh;
+}
